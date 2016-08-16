@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'gaoduanhei';
+    src: url('../asset/font/gaoduanhei.ttf');
+}
+@font-face {
+    font-family: 'NotoSansHans-DemiLight';
+    src: url('../asset/font/NotoSansHans-DemiLight.otf');
+}
+@font-face {
+    font-family: 'xintangren';
+    src: url('../asset/font/xintangren.ttf');
+}
+
+skill-description {
+	font-size: 11;
+}
+
+.card {
+    position: relative;
+    width: 400px;
+    height: 560px;
+	background-size: cover;
+	background-color: #cccccc;
+	background-image: url("../profile.jpeg");
+	background-repeat:no-repeat;
+	background-position:center;
+	border-radius: 10px;
+	border:1px solid black;
+
+}
+
+.blur-background {
+	position: absolute;
+	-webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    width: 100%;
+    height: 100px;
+    background-color: #ccc;
+	opacity: 0.4;
+}
+
+.card-header {
+	position: absolute;
+	width: 100%;
+}
+
+.clan {
+	font-size: 4.0em;
+	margin: 3%;
+	display: inline-block;
+	vertical-align: top;
+	font-family: 'gaoduanhei';
+	color: black;
+}
+
+.blood {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 6%;
+	width: 30px;
+	height: 30px;
+	background-size: auto 100%;
+	background-image: url("../asset/blood.png");
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+.profile-section {
+	position: absolute;
+	top:100px;
+	left: 2%;
+    width: 96%;
+	opacity: 0.9;
+	border-radius: 5px;
+}
+
+.nickname {
+	font-family: 'xintangren';
+	font-size: 1.7em;
+	margin: 3%;
+	width: 5%;
+	color: black;
+}
+
+.name {
+	font-family: 'xintangren';
+	font-size: 2.0em;
+	margin: 3%;
+	width: 5%;
+	color: black;
+}
+
+.skill-section {
+	position: absolute;
+	bottom:0;
+	left: 2%;
+    width: 96%;
+	margin-bottom: 2%;
+	background-color: #78909C;
+	opacity: 0.9;
+	border-radius: 5px;
+}
+
+.skill-block {
+	margin: 10px;
+}
+
+.skill-block div {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.skill-title-content {
+	font-family: 'gaoduanhei';
+	font-size: 1.6em;
+	width: 15%;
+}
+
+.skill-description-content {
+	font-family: 'NotoSansHans-DemiLight';
+	font-size: 0.8em;
+	width: 83%;
+}
