@@ -14,31 +14,31 @@ skill-description {
     font-size: 11;
 }
 .card {
-	position: relative;
-	width: 400px;
-	height: 560px;
+    position: relative;
+    width: 400px;
+    height: 560px;
     border-radius: 15px;
     border: 1px solid black;
-	background-color: white;
+    background-color: white;
 }
 
 .card-image {
-	position: relative;
+    position: relative;
     width: 76%;
     height: 80%;
-	margin: 18% 12% 2% 12%;
+    margin: 18% 12% 2% 12%;
     background-size: cover;
     background-color: #cccccc;
     background-image: url("../profile.jpeg"); /*角色图片*/
     background-repeat: no-repeat;
     background-position: center;
-	box-shadow: 0 0 8px 8px white inset;
-	border-radius: 10px;
+    box-shadow: 0 0 8px 8px white inset;
+    border-radius: 10px;
 }
 
 .blur-background {
     position: absolute;
-	top: 0;
+    top: 0;
     -webkit-filter: blur(5px);
     -moz-filter: blur(5px);
     -o-filter: blur(5px);
@@ -51,7 +51,7 @@ skill-description {
 }
 .card-header {
     position: absolute;
-	top: 0px;
+    top: 0px;
     width: 100%;
 }
 .clan {
