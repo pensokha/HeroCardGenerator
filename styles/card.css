@@ -11,7 +11,7 @@
     src: url('../asset/font/xintangren.ttf');
 }
 skill-description {
-    font-size: 11;
+    font-size: 0.8em;
 }
 .card {
     position: relative;
@@ -22,18 +22,39 @@ skill-description {
     background-color: white;
 }
 
+.frame-top {
+    position: absolute;
+    top: 70px;
+    right: 1%;
+    width: 90%;
+    height: 5%;
+    border-color: #EDAB24;
+    border-style: solid;
+    border-width: 3px 0px 0px 0px;
+}
+
+.frame-right {
+    position: absolute;
+    top: 20px;
+    right: 9%;
+    width: 5%;
+    height: 500px;
+    border-color: #B22311;
+    border-style: solid;
+    border-width: 0px 4px 0px 0px;
+}
+
 .card-image {
     position: relative;
     width: 76%;
     height: 80%;
-    margin: 18% 12% 2% 12%;
+    margin: 18% 10% 12% 11%;
     background-size: cover;
     background-color: #cccccc;
     background-image: url("../profile.jpeg"); /*角色图片*/
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 0 0 8px 8px white inset;
-    border-radius: 10px;
+    box-shadow: 0 0 10px 10px white inset;
 }
 
 .blur-background {
@@ -56,7 +77,7 @@ skill-description {
 }
 .clan {
     font-size: 4.0em;
-    margin: 2%;
+    margin: 1% 2% 2% 3%;
     display: inline-block;
     vertical-align: top;
     font-family: 'gaoduanhei';
@@ -86,14 +107,16 @@ skill-description {
     font-size: 1.7em;
     margin: 2%;
     width: 5%;
-    color: black;
+    color: #273268;
+    text-shadow: 2px 2px 2px white;
 }
 .name {
     font-family: 'xintangren';
     font-size: 3.0em;
     margin: 20px 0px 0px 0px;
     width: 5%;
-    color: black;
+    color: #273268;
+    text-shadow: 0px 0px 0px white;
 }
 .skill-section {
     position: absolute;
