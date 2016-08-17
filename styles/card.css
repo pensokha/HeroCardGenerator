@@ -11,7 +11,7 @@
     src: url('../asset/font/xintangren.ttf');
 }
 skill-description {
-    font-size: 0.8em;
+    font-size: 0.75em;
 }
 .card {
     position: relative;
@@ -47,11 +47,11 @@ skill-description {
 .card-image {
     position: relative;
     width: 76%;
-    height: 80%;
-    margin: 18% 11% 12% 13%;
+    height: 70%;
+    margin: 18% 11% 22% 13%;
     background-size: cover;
     background-color: #cccccc;
-    background-image: url("../profile.jpeg"); /*角色图片*/
+    background-image: url("../jiafeng.jpg"); /*角色图片*/
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0 0 10px 10px white inset;
