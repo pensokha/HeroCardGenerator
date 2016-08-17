@@ -12,11 +12,14 @@ const imagemin = require('imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 
+const templates_dir = "./templates/"
+
 // Configuration begins
 const tmp_dir = './tmp/';
 const output_dir = './outputs/';
 const source_dir = "./data/";
 
+let template = 'Mondrian';
 let format = '.png';
 let optimized = true;
 // Configuration ends
@@ -29,7 +32,9 @@ if (!fs.existsSync(output_dir)) {
     fs.mkdirSync(output_dir);
 }
 
-let card_template = fs.readFileSync('./template.html').toString();
+let template_dir = templates_dir + template + '/';
+let template_path = template_dir + 'template.html';
+let template_content = fs.readFileSync(template_path).toString();
 
 let skill_section_template = " \
 	<div class=\"skill-block\"> \
@@ -79,7 +84,9 @@ function create_card(source) {
         skills += skill;
     }
 
-    let card = card_template.replace("[image]", image)
+    let card = template_content
+        .replace("[tempalte_relative_path]", "../" + template_dir)
+        .replace("[image]", image)
         .replace("[clan]", clan)
         .replace("[bloods]", bloods)
         .replace("[nickname]", nickname)
@@ -129,7 +136,7 @@ function create_card(source) {
 
 function get_profile_image(id) {
 
-    let default_profile_image = "./asset/profile.jpg";
+    let default_profile_image = "./templates/assets/profile.jpg";
     let image_formats = ['jpg', 'JPG', 'jpeg', 'JEPG', 'png', 'PNG'];
     for (let i=0; i<image_formats.length; i++) {
         let format = image_formats[i];

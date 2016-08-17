@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'gaoduanhei';
-    src: url('../asset/font/gaoduanhei.ttf');
+    src: url('../assets/font/gaoduanhei.ttf');
 }
 @font-face {
     font-family: 'NotoSansHans-DemiLight';
-    src: url('../asset/font/NotoSansHans-DemiLight.otf');
+    src: url('../assets/font/NotoSansHans-DemiLight.otf');
 }
 @font-face {
     font-family: 'xintangren';
-    src: url('../asset/font/xintangren.ttf');
+    src: url('../assets/font/xintangren.ttf');
 }
 skill-description {
     font-size: 0.75em;
