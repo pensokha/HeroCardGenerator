@@ -1,0 +1,23 @@
+{
+  "name": "herocard",
+  "version": "1.0.0",
+  "description": "三国杀风格卡牌生成器",
+  "main": "automation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackjustu/HeroCardGenerator.git"
+  },
+  "author": "Cosmo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hackjustu/HeroCardGenerator/issues"
+  },
+  "homepage": "https://github.com/hackjustu/HeroCardGenerator#readme",
+  "dependencies": {
+    "chinese-conv": "^1.0.1",
+    "phantomjs-prebuilt": "^2.1.12"
+  }
+}
