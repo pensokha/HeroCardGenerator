@@ -9,7 +9,9 @@ npm install
 node automation.js
 ```
 
-把图片和描述人物的JSON文件放到`./data/`中，图片名字必须为JSON文件中的`id + .jpg`。
+把图片和描述人物的JSON文件放到`./data/`中，图片名字必须与JSON文件中的`id`相同。可接受图片格式为
+- png/PNG
+- jpg/jpeg/JPG/JPEG
 
 ### 例子
 `./data/`中有`zhangsanfeng.json`和`zhangsanfeng.jpg`。 其中JSON文件内容如下：
@@ -20,7 +22,7 @@ node automation.js
   "clan": "武当",
   "blood_number": "4",
   "nickname": "一代宗师",
-  "name": "张无忌",
+  "name": "张三丰",
   "skills_group": [
     {
       "title": "突袭",
