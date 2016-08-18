@@ -1,17 +1,21 @@
 {
-  "id": "qinyuan",
-  "clan": "太阁",
-  "blood_number": "4",
-  "nickname": "生长学习",
-  "name": "冯沁原",
-  "skills_group": [
-    {
-      "title": "福利",
-      "description": "出牌阶段，可以将任意数量的手牌以任意分配方式交给其他角色，若给出的牌张数不少于两张时，回复1点体力。"
-    },
-    {
-      "title": "鸡汤",
-      "description": "主公技，当需要用【杀】时，所有太阁角色依次选择是否出【杀】，直到有角色或没有角色决定如此作时为止。"
+    "id": "qinyuan",
+    "clan": "太阁",
+    "blood_number": "4",
+    "nickname": "生长学习",
+    "name": "冯沁原",
+    "skills_group": [
+        {
+            "title": "福利",
+            "description": "出牌阶段，可以将任意数量的手牌以任意分配方式交给其他角色，若给出的牌张数不少于两张时，回复1点体力。"
+        },
+        {
+            "title": "鸡汤",
+            "description": "主公技，当需要用【杀】时，所有太阁角色依次选择是否出【杀】，直到有角色或没有角色决定如此作时为止。"
+        }
+    ],
+    "card_suit": {
+        "suit": "heart",
+        "number": "4"
     }
-  ]
 }

@@ -1,18 +1,21 @@
+@import url("../assets/icons/font-awesome.min.css");
+
 @font-face {
     font-family: 'gaoduanhei';
-    src: url('../assets/font/gaoduanhei.ttf');
+    src: url('../assets/fonts/gaoduanhei.ttf');
 }
 @font-face {
     font-family: 'NotoSansHans-DemiLight';
-    src: url('../assets/font/NotoSansHans-DemiLight.otf');
+    src: url('../assets/fonts/NotoSansHans-DemiLight.otf');
 }
 @font-face {
     font-family: 'xintangren';
-    src: url('../assets/font/xintangren.ttf');
+    src: url('../assets/fonts/xintangren.ttf');
 }
 skill-description {
     font-size: 0.75em;
 }
+
 .card {
     position: relative;
     width: 400px;
@@ -25,8 +28,8 @@ skill-description {
 .frame-top {
     position: absolute;
     top: 68px;
-    right: 1%;
-    width: 85%;
+    left: 15%;
+    width: 82%;
     height: 5%;
     border-color: #EDAB24;
     border-style: solid;
@@ -35,20 +38,59 @@ skill-description {
 
 .frame-right {
     position: absolute;
-    top: 20px;
-    right: 9%;
+    bottom: 8%;
+    right: 8%;
     width: 5%;
-    height: 500px;
+    height: 88%;
     border-color: #B22311;
     border-style: solid;
     border-width: 0px 5px 0px 0px;
 }
 
+.blur-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-filter: blur(12px);
+    -moz-filter: blur(12px);
+    -o-filter: blur(12px);
+    -ms-filter: blur(12px);
+    filter: blur(12px);
+    width: 15%;
+    height: 115px;
+    background-color: white;
+    opacity: 0.95;
+}
+
+.suit {
+    position: absolute;
+    height:60px;
+    font-size:200%;
+    top: 1.3%;
+    right:14%;
+    background-color: white;
+    opacity: 1.0;
+}
+
+.card-number {
+    position:absolute;
+    font-size: 1.5em;
+    padding-left: 6px;
+    font-family: Sans-serif;
+}
+
+.card-suit {
+    position: absolute;
+    top: 53px;
+    padding-left: 4px;
+    font-size: 1.5em;
+}
+
 .card-image {
     position: relative;
-    width: 75%;
+    width: 70%;
     height: 70%;
-    margin: 20% 12% 10% 13%;
+    margin: 20% 15% 10% 15%;
     background-size: cover;
     background-color: #cccccc;
     background-repeat: no-repeat;
@@ -56,19 +98,6 @@ skill-description {
     box-shadow: 0 0 10px 10px white inset;
 }
 
-.blur-background {
-    position: absolute;
-    top: 0;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-    width: 100%;
-    height: 100px;
-    background-color: white;
-    opacity: 0.4;
-}
 .card-header {
     position: absolute;
     top: 0px;
@@ -81,7 +110,7 @@ skill-description {
     vertical-align: top;
     font-family: 'gaoduanhei';
     color: black;
-    text-shadow: 1px 1px 1px #273268;
+    text-shadow: 0px 0px 0px #424242;
 }
 .blood {
     display: inline-block;

@@ -14,6 +14,21 @@ const imageminPngquant = require('imagemin-pngquant');
 
 const templates_dir = "./templates/"
 
+const suit_red_hex = "#831a0d";
+const suit_black_hex = "#212121";
+
+const spade = {"name":"spade","code":"&#x2660;","color":suit_black_hex};
+const heart = {"name":"heart","code":"&#x2665;","color":suit_red_hex};
+const club = {"name":"club","code":"&#x2663;","color":suit_black_hex};
+const diamond = {"name":"diamond","code":"&#x2666;","color":suit_red_hex};
+const card_suits = [spade, heart, club, diamond];
+const card_suits_dict = {"spade": 0, "heart": 1, "club": 2, "diamond": 3};
+const card_numbers = ['A','2','3','4','5','6','7','8','9','X','J','Q','K'];
+const card_suits_len = card_suits.length;
+const card_numbers_len = card_numbers.length;
+
+let suit_records = {};
+
 let preset_skills;
 try {
     preset_skills = JSON.parse(fs.readFileSync("./skills.json")).skills;
@@ -60,6 +75,7 @@ let files = fs.readdirSync(source_dir);
 for (let i in files) {
     let file = files[i];
     if (file.endsWith(".json")) {
+        //console.log(file.toString());
         create_card(source_dir + file);
     }
 }
@@ -67,6 +83,7 @@ for (let i in files) {
 function create_card(source) {
 
     let contents = fs.readFileSync(source);
+    let dirty = false;
 
     let jsonContent;
     try {
@@ -91,9 +108,29 @@ function create_card(source) {
         skills_group.push(randome_skill.skill);
         skills_group.push(get_random_skill(randome_skill.index).skill);
         jsonContent['skills_group'] = skills_group;
+        dirty = true;
+    }
+
+    let card_suit;
+    if (jsonContent.hasOwnProperty('card_suit')){
+        card_suit = jsonContent.card_suit;
+        let suit_index = card_suits_dict[jsonContent.card_suit.suit];
+        card_suit['color'] = card_suits[suit_index].color;
+        card_suit['code'] = card_suits[suit_index].code;
+        suit_records[card_suit.suit + '_' + card_suit.number] = 'true';
+    } else {
+        card_suit = get_unique_suit();
+        jsonContent['card_suit'] = {
+            'suit':  card_suit.name,
+            'number': card_suit.number
+        }
+        dirty = true;
+    }
+
+    if (dirty) {
         fs.writeFile(source, JSON.stringify(jsonContent, null, 4), (err) => {
           if (err) throw err;
-          console.log('Random skills are saved to ' + id + '\'profile');
+          console.log('New contents are saved to ' + id + '\'profile');
         });
     }
 
@@ -119,7 +156,10 @@ function create_card(source) {
         .replace("[bloods]", bloods)
         .replace("[nickname]", nickname)
         .replace("[name]", name)
-        .replace("[skills]", skills);
+        .replace("[skills]", skills)
+        .replace("[suit-color]", card_suit.color)
+        .replace("[card-suit]", card_suit.code)
+        .replace("[card-number]", card_suit.number);
 
     let tmp_html_path = tmp_dir + id + '_output.html';
     let tmp_image_path = tmp_dir + id + format;
@@ -191,5 +231,25 @@ function get_random_skill(blacklist_index) {
     return {
         'index': random_index,
         'skill': preset_skills[random_index]
+    }
+}
+
+function get_unique_suit() {
+
+    let suit, index, type;
+    do {
+        suit = Math.floor(Math.random() * card_suits_len);
+        index = Math.floor(Math.random() * card_numbers_len);
+        type = suit + '_' + index;
+        //console.log("Inside do while loop...: " + type);
+    } while (suit_records.hasOwnProperty(type));
+
+    suit_records[type] = 'true';
+
+    return  {
+        "name": card_suits[suit].name,
+        "code": card_suits[suit].code,
+        "color": card_suits[suit].color,
+        "number": card_numbers[index]
     }
 }
