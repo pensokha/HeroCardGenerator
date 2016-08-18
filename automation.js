@@ -14,6 +14,14 @@ const imageminPngquant = require('imagemin-pngquant');
 
 const templates_dir = "./templates/"
 
+let preset_skills;
+try {
+    preset_skills = JSON.parse(fs.readFileSync("./skills.json")).skills;
+} catch (e) {
+    console.log("Failed to read preset skills: " + e);
+}
+let preset_skills_len = preset_skills.length;
+
 // Configuration begins
 const tmp_dir = './tmp/';
 const output_dir = './outputs/';
@@ -59,7 +67,14 @@ for (let i in files) {
 function create_card(source) {
 
     let contents = fs.readFileSync(source);
-    let jsonContent = JSON.parse(contents);
+
+    let jsonContent;
+    try {
+        jsonContent = JSON.parse(contents);
+    } catch (e) {
+        console.log("The content of " + source + "is not a valid json.");
+        return;
+    }
 
     let id = jsonContent.id;
     let clan = jsonContent.clan;
@@ -67,7 +82,20 @@ function create_card(source) {
     let blood_number = jsonContent.blood_number;
     let nickname = chineseConv.tify(jsonContent.nickname);
     let name = chineseConv.tify(jsonContent.name);
-    let skills_group = jsonContent.skills_group;
+    let skills_group = [];
+
+    if (jsonContent.hasOwnProperty('skills_group')){
+        skills_group = jsonContent.skills_group;
+    } else {
+        let randome_skill = get_random_skill(-1);
+        skills_group.push(randome_skill.skill);
+        skills_group.push(get_random_skill(randome_skill.index).skill);
+        jsonContent['skills_group'] = skills_group;
+        fs.writeFile(source, JSON.stringify(jsonContent, null, 4), (err) => {
+          if (err) throw err;
+          console.log('Random skills are saved to ' + id + '\'profile');
+        });
+    }
 
     console.log("Found profile for " + id);
 
@@ -151,4 +179,17 @@ function get_profile_image(id) {
     }
 
     return default_profile_image;
+}
+
+function get_random_skill(blacklist_index) {
+
+    let random_index;
+    do
+        random_index = Math.floor(Math.random() * preset_skills_len);
+    while (random_index === blacklist_index);
+
+    return {
+        'index': random_index,
+        'skill': preset_skills[random_index]
+    }
 }

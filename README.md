@@ -1,7 +1,8 @@
 # 人物卡牌生成器
-利用`PhantomJS`来生成三国杀风格的人物卡牌。
+利用`HTML`+`CSS`+`NodeJS`+`PhantomJS`生成三国杀风格的人物卡牌。
+>下图中的头像经prisma处理，该项目不包含图片滤镜功能。如果有免费开源滤镜推荐，可以联系我哦~
 
-![](./samples/screenshot.png)
+![](./samples/biaozhunbao.png)
 
 ## 使用说明
 ```bash
