@@ -12,6 +12,9 @@ const imagemin = require('imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 
+const Promise = require("bluebird");
+const readFile = Promise.promisify(require("fs").readFile);
+
 const templates_dir = "./templates/"
 
 const suit_red_hex = "#831a0d";
@@ -71,27 +74,46 @@ let skill_section_template = " \
 
 let blood_template = "<div class=\"blood\"></div>";
 
+console.log("Preparing for the preset card suit...");
+let file_reading_promises = [];
+let processed_profiles = [];
+
 let files = fs.readdirSync(source_dir);
 for (let i in files) {
     let file = files[i];
     if (file.endsWith(".json")) {
-        //console.log(file.toString());
-        create_card(source_dir + file);
+        file_reading_promises.push(readFile(source_dir + file, "utf8").then(function(contents) {
+
+            let jsonContent = JSON.parse(contents);
+            processed_profiles.push({
+                "content": jsonContent,
+                "source": source_dir + file
+            });
+
+            if (jsonContent.hasOwnProperty('card_suit')){
+                let card_suit = jsonContent.card_suit;
+                let suit_index =
+                    card_suits_dict[jsonContent.card_suit.suit.toLowerCase()];
+                suit_records[suit_index + '_' + card_suit.number] = 'true';
+                console.log(card_suit.suit + ' ' + card_suit.number + ' is taken by ' + jsonContent.id);
+            }
+        }).catch(function(e) {
+            console.log("Error reading file", e);
+        }));
     }
 }
 
-function create_card(source) {
+Promise.all(file_reading_promises).then(function(results) {
+   for (let i=0; i<processed_profiles.length; i++) {
+       create_card(processed_profiles[i]);
+   }
+});
 
-    let contents = fs.readFileSync(source);
+function create_card(processed_profile) {
+
     let dirty = false;
 
-    let jsonContent;
-    try {
-        jsonContent = JSON.parse(contents);
-    } catch (e) {
-        console.log("The content of " + source + "is not a valid json.");
-        return;
-    }
+    let jsonContent = processed_profile.content;
 
     let id = jsonContent.id;
     let clan = jsonContent.clan;
@@ -114,10 +136,10 @@ function create_card(source) {
     let card_suit;
     if (jsonContent.hasOwnProperty('card_suit')){
         card_suit = jsonContent.card_suit;
-        let suit_index = card_suits_dict[jsonContent.card_suit.suit];
+        let suit_index = card_suits_dict[jsonContent.card_suit.suit.toLowerCase()];
         card_suit['color'] = card_suits[suit_index].color;
         card_suit['code'] = card_suits[suit_index].code;
-        suit_records[card_suit.suit + '_' + card_suit.number] = 'true';
+        suit_records[suit_index + '_' + card_suit.number] = 'true';
     } else {
         card_suit = get_unique_suit();
         jsonContent['card_suit'] = {
@@ -127,14 +149,14 @@ function create_card(source) {
         dirty = true;
     }
 
+    console.log("Creating a card for " + id);
+
     if (dirty) {
-        fs.writeFile(source, JSON.stringify(jsonContent, null, 4), (err) => {
+        fs.writeFile(processed_profile.source, JSON.stringify(jsonContent, null, 4), (err) => {
           if (err) throw err;
           console.log('New contents are saved to ' + id + '\'profile');
         });
     }
-
-    console.log("Found profile for " + id);
 
     let bloods = "";
     for (let i = 0; i < blood_number; i++) {
