@@ -104,6 +104,7 @@ for (let i in files) {
 }
 
 Promise.all(file_reading_promises).then(function(results) {
+
    for (let i=0; i<processed_profiles.length; i++) {
        create_card(processed_profiles[i]);
    }
@@ -264,7 +265,7 @@ function get_unique_suit() {
     do {
         suit = Math.floor(Math.random() * card_suits_len);
         index = Math.floor(Math.random() * card_numbers_len);
-        type = suit + '_' + index;
+        type = suit + '_' + card_numbers[index];
         //console.log("Inside do while loop...: " + type);
     } while (suit_records.hasOwnProperty(type));
 
