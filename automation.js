@@ -233,7 +233,7 @@ function get_profile_image(id) {
     let image_formats = ['jpg', 'JPG', 'jpeg', 'JEPG', 'png', 'PNG'];
     for (let i=0; i<image_formats.length; i++) {
         let format = image_formats[i];
-        let image_path = "./data/" + id + '.' + format;
+        let image_path = source_dir + id + '.' + format;
         try {
           fs.statSync(image_path);
           return image_path;
