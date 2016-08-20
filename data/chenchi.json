@@ -15,7 +15,7 @@
         }
     ],
     "card_suit": {
-        "suit": "diamond",
-        "number": "9"
+        "suit": "club",
+        "number": "X"
     }
 }

@@ -139,7 +139,9 @@ function create_card(processed_profile) {
         let suit_index = card_suits_dict[jsonContent.card_suit.suit.toLowerCase()];
         card_suit['color'] = card_suits[suit_index].color;
         card_suit['code'] = card_suits[suit_index].code;
-        suit_records[suit_index + '_' + card_suit.number] = 'true';
+        let type = suit_index + '_' + card_suit.number;
+        suit_records[type] = 'true';
+        //console.log("Setting " + type);
     } else {
         card_suit = get_unique_suit();
         jsonContent['card_suit'] = {
