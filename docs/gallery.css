@@ -98,3 +98,8 @@ blockquote {
   margin: 5px;
   padding: 0.5em 10px;
 }
+
+.header {
+    background-image: url("logo.png");
+    background-color: #cccccc;
+}
