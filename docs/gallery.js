@@ -25,7 +25,7 @@ if (!fs.existsSync(images_dir)) {
     fs.mkdirSync(images_dir);
 }
 
-fs.createReadStream('./gallery.css').pipe(fs.createWriteStream(build_dir + '/gallery.css'));
+//fs.createReadStream('./gallery.css').pipe(fs.createWriteStream(build_dir + '/gallery.css'));
 
 copydir.sync(source_dir, images_dir);
 
@@ -39,8 +39,14 @@ for (let i in files) {
 	}
 }
 
+console.log(files.length);
+
+let progress = (files.length/54).toFixed(3) * 100;
+
 let template = fs.readFileSync("./index_template.html");
-let processed_content = template.toString().replace("[images_section]", images_section);
+let processed_content = template.toString()
+        .replace("[images_section]", images_section)
+		.replace("[progress]", progress);
 
 fs.writeFileSync( build_dir + "/index.html", processed_content);
 console.log("New index.html has been saved.");

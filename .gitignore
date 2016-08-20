@@ -4,5 +4,7 @@ outputs/
 others/
 data/
 太阁杀/
+其他杀/
+color.css
 .DS_Store
-test.js
+test.*
