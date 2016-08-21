@@ -29,19 +29,21 @@ if (!fs.existsSync(images_dir)) {
 
 copydir.sync(source_dir, images_dir);
 
+let image_num = 0;
 let images_section = "";
 let files = fs.readdirSync(images_dir);
 for (let i in files) {
   let file = files[i];
   if (file.endsWith(".png")) {
+	    image_num += 1;
 		let file_path = images_relative_path + file;
 		images_section += card_template.replace("[image_path]", file_path);
 	}
 }
 
-console.log(files.length);
+console.log(image_num);
 
-let progress = (files.length/54).toFixed(3) * 100;
+let progress = (image_num/54).toFixed(3) * 100;
 
 let template = fs.readFileSync("./index_template.html");
 let processed_content = template.toString()
