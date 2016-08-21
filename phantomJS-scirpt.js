@@ -4,7 +4,7 @@ var page = require('webpage').create();
 var input = args[1];
 var output = args[2];
 
-var zoom_factor = 1.0;
+var zoom_factor = 0.75;
 var view_width = 1000 * zoom_factor;
 var view_height = 100;
 page.viewportSize = { width: view_width, height: view_height };
