@@ -78,6 +78,8 @@ console.log("Preparing for the preset card suit...");
 let file_reading_promises = [];
 let processed_profiles = [];
 
+let deck_size  = 0;
+
 let files = fs.readdirSync(source_dir);
 for (let i in files) {
     let file = files[i];
@@ -92,10 +94,10 @@ for (let i in files) {
 
             if (jsonContent.hasOwnProperty('card_suit')){
                 let card_suit = jsonContent.card_suit;
-                let suit_index =
-                    card_suits_dict[jsonContent.card_suit.suit.toLowerCase()];
+                let suit_index = card_suits_dict[jsonContent.card_suit.suit.toLowerCase()];
                 suit_records[suit_index + '_' + card_suit.number] = 'true';
                 console.log(card_suit.suit + ' ' + card_suit.number + ' is taken by ' + jsonContent.id);
+                deck_size += 1;
             }
         }).catch(function(e) {
             console.log("Error reading file", e);
@@ -267,8 +269,9 @@ function get_unique_suit() {
         index = Math.floor(Math.random() * card_numbers_len);
         type = suit + '_' + card_numbers[index];
         //console.log("Inside do while loop...: " + type);
-    } while (suit_records.hasOwnProperty(type));
+    } while (suit_records.hasOwnProperty(type) && deck_size < 52);
 
+    deck_size += 1;
     suit_records[type] = 'true';
 
     return  {
