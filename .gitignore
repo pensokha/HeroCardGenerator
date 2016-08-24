@@ -1,11 +1,13 @@
 node_modules/
-tmp/
+tmp*/
 outputs/
 others/
 data/
 game1/
 太阁杀/
 其他杀/
+data_fun/
+outputs_fun/
 color.css
 .DS_Store
 test.*

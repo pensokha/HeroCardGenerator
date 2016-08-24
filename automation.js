@@ -41,9 +41,10 @@ try {
 let preset_skills_len = preset_skills.length;
 
 // Configuration begins
-const tmp_dir = './tmp/';
-const output_dir = './outputs/';
-const source_dir = "./data/";
+const postfix = '';
+const tmp_dir = './tmp' + postfix + '/';
+const output_dir = './outputs' + postfix + '/';
+const source_dir = './data' + postfix + '/';
 
 let template = 'Mondrian';
 let format = '.png';
@@ -148,7 +149,7 @@ function create_card(processed_profile) {
     } else {
         card_suit = get_unique_suit();
         jsonContent['card_suit'] = {
-            'suit':  card_suit.name,
+            'suit':  card_suit.suit,
             'number': card_suit.number
         }
         dirty = true;
@@ -188,9 +189,11 @@ function create_card(processed_profile) {
         .replace("[card-suit]", card_suit.code)
         .replace("[card-number]", card_suit.number);
 
-    let tmp_html_path = tmp_dir + id + '_output.html';
-    let tmp_image_path = tmp_dir + id + format;
-    let output_image_path = output_dir + id + format;
+    let output_image_prefix = card_suit.suit + '_' + card_suit.number  + '_';
+
+    let tmp_html_path = tmp_dir + output_image_prefix + id + '_output.html';
+    let tmp_image_path = tmp_dir + output_image_prefix + id + format;
+    let output_image_path = output_dir + output_image_prefix + id  + format;
 
     fs.writeFileSync(tmp_html_path, card);
 
@@ -263,11 +266,11 @@ function get_random_skill(blacklist_index) {
 
 function get_unique_suit() {
 
-    let suit, index, type;
+    let suit_index, number_index, type;
     do {
-        suit = Math.floor(Math.random() * card_suits_len);
-        index = Math.floor(Math.random() * card_numbers_len);
-        type = suit + '_' + card_numbers[index];
+        suit_index = Math.floor(Math.random() * card_suits_len);
+        number_index = Math.floor(Math.random() * card_numbers_len);
+        type = suit_index + '_' + card_numbers[number_index];
         //console.log("Inside do while loop...: " + type);
     } while (suit_records.hasOwnProperty(type) && deck_size < 52);
 
@@ -275,9 +278,9 @@ function get_unique_suit() {
     suit_records[type] = 'true';
 
     return  {
-        "name": card_suits[suit].name,
-        "code": card_suits[suit].code,
-        "color": card_suits[suit].color,
-        "number": card_numbers[index]
+        "suit": card_suits[suit_index].name,
+        "code": card_suits[suit_index].code,
+        "color": card_suits[suit_index].color,
+        "number": card_numbers[number_index]
     }
 }
