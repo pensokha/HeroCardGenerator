@@ -1,5 +1,5 @@
 # 人物卡牌生成器
-利用`HTML`+`CSS`+`NodeJS`+`PhantomJS`生成三国杀风格的人物卡牌。
+利用`HTML`+`CSS`+`NodeJS`+`PhantomJS`生成三国杀风格的人物卡牌。 [例子哦~](http://hackjutsu.com/HeroCardGenerator/)
 
 ![](./samples/biaozhunbao2.png)
 
@@ -40,11 +40,11 @@ node automation.js
 
 ## FAQ
 Q: 会制作一个GUI方便大家使用吗？
-A: 没空。
+A: 感兴趣的童鞋欢迎和我联系。
 
 Q: 中文字体能够商用么？ A: 可以。
 
-Q: 可以修改主题吗？ A: 可以，自己弄。
+Q: 可以修改主题吗？ A: 可以在templates文件夹中建立自己的html template。
 
 ## License
 MIT
