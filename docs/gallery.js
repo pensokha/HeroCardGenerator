@@ -5,7 +5,7 @@ const copydir = require('copy-dir');
 let card_template = " \
 <a> \
 	<figure> \
-		<img src=[image_path] style=\"background-color:white;\"> \
+		<img class=\"taigesha\" src=[image_path] style=\"background-color:white;\"> \
 		<figcaption> \
 		</figcaption> \
 	</figure> \

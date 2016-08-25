@@ -1,8 +1,8 @@
 node_modules/
 tmp*/
-outputs/
+outputs*/
 others/
-data/
+data*/
 game1/
 太阁杀/
 其他杀/

@@ -30,6 +30,27 @@ const card_numbers = ['A','2','3','4','5','6','7','8','9','X','J','Q','K'];
 const card_suits_len = card_suits.length;
 const card_numbers_len = card_numbers.length;
 
+// 人物卡牌技能区
+let person_skill_section_template = " \
+	<div class=\"skill-block\"> \
+		<div class=\"skill-title-content\"> \
+			<b>[-title-]</b> \
+		</div> \
+		<div class=\"skill-description-content\"> \
+			<skill-description>[-description-]</skill-description> \
+		</div> \
+	</div>"
+
+// 锦囊装备牌描述区
+let other_skill_section_template = " \
+	<div class=\"skill-block\"> \
+		<div class=\"skill-description-content\"> \
+			<skill-description>[-description-]</skill-description> \
+		</div> \
+	</div>"
+
+let blood_template = "<div class=\"blood\"></div>";
+
 let suit_records = {};
 
 let preset_skills;
@@ -41,15 +62,27 @@ try {
 let preset_skills_len = preset_skills.length;
 
 // Configuration begins
-const postfix = '';
-const tmp_dir = './tmp' + postfix + '/';
-const output_dir = './outputs' + postfix + '/';
-const source_dir = './data' + postfix + '/';
+const if_person_card = true;
+let tmp_dir = './tmp' + '/';
+let output_dir = './outputs' + '/';
+let source_dir = './data' + '/';
 
 let template = 'Mondrian';
 let format = '.png';
 let optimized = true;
 // Configuration ends
+
+let skill_section_template;
+if (if_person_card) {
+    skill_section_template = person_skill_section_template;
+} else {
+    const postfix = "_other";
+    skill_section_template = other_skill_section_template;
+    tmp_dir = './tmp' + postfix + '/';
+    output_dir = './outputs' + postfix + '/';
+    source_dir = './data' + postfix + '/';
+    template = template + postfix;
+}
 
 if (!fs.existsSync(tmp_dir)) {
     fs.mkdirSync(tmp_dir);
@@ -63,17 +96,7 @@ let template_dir = templates_dir + template + '/';
 let template_path = template_dir + 'template.html';
 let template_content = fs.readFileSync(template_path).toString();
 
-let skill_section_template = " \
-	<div class=\"skill-block\"> \
-		<div class=\"skill-title-content\"> \
-			<b>[-title-]</b> \
-		</div> \
-		<div class=\"skill-description-content\"> \
-			<skill-description>[-description-]</skill-description> \
-		</div> \
-	</div>"
 
-let blood_template = "<div class=\"blood\"></div>";
 
 console.log("Preparing for the preset card suit...");
 let file_reading_promises = [];
