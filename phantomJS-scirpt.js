@@ -4,7 +4,7 @@ var page = require('webpage').create();
 var input = args[1];
 var output = args[2];
 
-var zoom_factor = 0.75;
+var zoom_factor = 2.75;
 var view_width = 1000 * zoom_factor;
 var view_height = 100;
 page.viewportSize = { width: view_width, height: view_height };
@@ -13,7 +13,7 @@ page.zoomFactor = zoom_factor;
 page.open(input, function() {
 
 	var clipRect = page.evaluate(function() {
-	  return document.querySelector(".card").getBoundingClientRect();
+	  return document.querySelector(".outline").getBoundingClientRect();
     });
 
 	var clipTop = clipRect.top * zoom_factor;

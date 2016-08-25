@@ -14,6 +14,15 @@ skill-description {
     font-size: 0.75em;
 }
 
+.outline {
+    padding-top : 25px;
+    padding-bottom : 25px;
+    padding-left : 25px;
+
+    width: 430px;
+    /*height: 620px;*/
+}
+
 .card {
     position: relative;
     width: 400px;
@@ -47,13 +56,13 @@ skill-description {
 
 .blur-background {
     position: absolute;
-    top: 0;
-    right: 0;
-    -webkit-filter: blur(12px);
-    -moz-filter: blur(12px);
-    -o-filter: blur(12px);
-    -ms-filter: blur(12px);
-    filter: blur(12px);
+    top: 5px;
+    right: 5px;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
     width: 15%;
     height: 115px;
     background-color: white;

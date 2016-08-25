@@ -177,10 +177,10 @@ skill-description {
 
 .card_type {
     position: absolute;
-    left: 5%;
+    left: 3%;
     bottom: 0%;
     width: 100px;
-    height: 80px;
+    height: 60px;
     background-size: auto 100%;
     background-image: url("../assets/jinnang.png");
     background-repeat: no-repeat;
