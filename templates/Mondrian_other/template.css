@@ -14,6 +14,15 @@ skill-description {
     font-size: 0.75em;
 }
 
+.outline {
+    padding-top : 25px;
+    padding-bottom : 25px;
+    padding-left : 25px;
+
+    width: 430px;
+    /*height: 620px;*/
+}
+
 .card {
     position: relative;
     width: 400px;
