@@ -45,13 +45,26 @@ skill-description {
 
 .frame-right {
     position: absolute;
-    bottom: 8%;
+    bottom: 20%;
     right: 8%;
     width: 5%;
-    height: 88%;
+    height: 50%;
     border-color: #B22311;
     border-style: solid;
     border-width: 0px 5px 0px 0px;
+}
+
+.logo {
+    position: absolute;
+    top: 22%;
+    right: 3%;
+    width: 45px;
+    height:85px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image:url('../assets/stamp.png');
+    box-shadow: 2px white inset;
 }
 
 .blur-background {
@@ -64,9 +77,9 @@ skill-description {
     -ms-filter: blur(5px);
     filter: blur(5px);
     width: 15%;
-    height: 115px;
+    height: 230px;
     background-color: white;
-    opacity: 0.95;
+    opacity: 0.98;
 }
 
 .suit {
@@ -117,8 +130,8 @@ skill-description {
     vertical-align: top;
     font-family: 'gaoduanhei';
     color: black;
-    text-shadow: 0px 0px 0px #424242;
 }
+
 .blood {
     display: inline-block;
     vertical-align: top;
