@@ -70,6 +70,7 @@ let source_dir = './data' + '/';
 let template = 'Mondrian';
 let format = '.png';
 let optimized = true;
+let zoom_factor = 3.0;
 // Configuration ends
 
 let skill_section_template;
@@ -223,7 +224,8 @@ function create_card(processed_profile) {
     let childArgs = [
         path.join(__dirname, phantomjs_script),
         tmp_html_path,
-        tmp_image_path
+        tmp_image_path,
+        zoom_factor
     ];
 
     childProcess.execFile(binPath, childArgs, (err, stdout, stderr) => {
