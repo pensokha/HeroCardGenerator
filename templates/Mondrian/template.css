@@ -50,19 +50,20 @@ skill-description {
     height: 77%;
     border-color: #B22311;
     border-style: solid;
-    border-width: 0px 6px 0px 0px;
+    border-width: 0px 4px 0px 0px;
 }
 
 .logo {
     position: absolute;
-    top: 35%;
-    right: 3%;
-    width: 45px;
-    height:85px;
+    top: 17%;
+    right: 18px;
+    width: 30px;
+    height: 220px;
+    background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image:url('../assets/stamp.png');
+    background-image:url('../assets/logo.png');
     box-shadow: 2px white inset;
 }
 
